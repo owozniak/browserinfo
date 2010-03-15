@@ -1,0 +1,11 @@
+Testet auf verschiedene Browserfähigkiten.
+
+Aufruf per JavaScript mit
+browsertest()
+
+Zurückgegeben wird ein Wert in dem alle Fehler eingerechnet sind:
+Fehler = 1 bedeutet es ist ein Flash installiert
+Fehler = 2 bedeutet es wird der IE benutzt
+Fehler = 4 bedeutet eine Firefox Version älter als 3.0 wird verwendet
+
+wird zum Beispiel der Fehler 5 zurückgegeben, ist der FF älter als 3.0 und kein Flash installiert.
