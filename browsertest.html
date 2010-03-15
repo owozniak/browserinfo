@@ -1,0 +1,44 @@
+<html>
+<head>
+
+	<title>Einfache Browserüberpfüfung</title>
+
+</head>
+<script type="text/javascript">
+function browsertest(){
+    var flash=false;
+    var fehler=0;
+    for (i = 0; i < navigator.plugins.length; ++i){
+        if  (navigator.plugins[i].name == "Shockwave Flash") falsh=true;
+    }
+    if (flash=false) fehler = fehler + 1;
+
+    if (navigator.appName == "Microsoft Internet Explorer") fehler = fehler + 2;
+    var agent = navigator.userAgent;
+    var pos = agent.indexOf("Firefox");
+    if (pos>-1) {
+        var version = agent.substring(pos+8, pos+11);
+        if (parseFloat(version)<3.0) fehler = fehler + 4;
+    }
+    // fehler = 1 : Kein Flash installiert
+    // fehler = 2 : InternetExplorer
+    // fehler = 3 : Alte FF Verision
+    
+    return fehler;
+}
+function test(){
+    var fehlertext="";
+    var fehler = browsertest();
+    if (fehler & 2) var fehlertext = fehlertext + "Sie nutzen den InternetExplorer.";
+    if (fehler & 1) var fehlertext = fehlertext +  "Sie haben kein Flash installiert."; 
+    if (fehler & 4) var fehlertext = fehlertext +  "Sie nutzen eine alte Version von Firefox.";
+    
+    if (fehlertext!="") alert (fehlertext + "Bitte melden Sie sich bei der IT unter der Rufnummer 8888, um dies zu beheben. ");
+}
+</script>
+
+<body onload="test()";)>
+
+
+</body>
+</html>
